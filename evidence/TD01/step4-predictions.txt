@@ -1,0 +1,13 @@
+Prédictions écrites AVANT chaque modification.
+
+Avant docker stop :
+- ID après stop : identique à l'original. Etat dans docker ps -a : Exited. curl : échec (connexion refusée). Image : toujours présente.
+
+Avant docker start :
+- ID après start : identique à l'original. Etat : Up. curl : 200 OK. Image : présente.
+
+Avant docker stop + docker rm :
+- Le conteneur n'apparaît plus dans docker ps -a. curl : échec. Image : toujours présente (seul le conteneur est supprimé).
+
+Avant ./scripts/td01-run.sh :
+- Nouvel ID : différent de l'original. Etat : Up. curl : 200 OK. Image : présente et inchangée.

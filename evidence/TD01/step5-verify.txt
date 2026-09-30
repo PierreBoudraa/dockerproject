@@ -1,0 +1,20 @@
+$ docker inspect (image, id, état, labels, restart)
+id=5c2474294c3c958785f947247de72b19b9118a88e9db391b4c2a3f489a70165c
+state=running
+image=nginxinc/nginx-unprivileged:1.29-alpine@sha256:8059701048a6cc7d64e8ab2812a44be70161bfa9ecfc01d69e95b8ff2a648705
+restart=no
+lab=TD01
+env=course-lab
+
+$ docker port td01-web
+8080/tcp -> 127.0.0.1:8080
+
+$ curl -sS -i (premières lignes)
+HTTP/1.1 200 OK
+Server: nginx/1.29.8
+Date: Wed, 30 Sep 2026 13:37:31 GMT
+Content-Type: text/html
+Content-Length: 896
+curl_exit=0
+
+NGINX_IMAGE attendue = nginxinc/nginx-unprivileged:1.29-alpine@sha256:8059701048a6cc7d64e8ab2812a44be70161bfa9ecfc01d69e95b8ff2a648705

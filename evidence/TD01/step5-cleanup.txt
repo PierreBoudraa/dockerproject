@@ -1,0 +1,10 @@
+CONTAINER ID   IMAGE                                     COMMAND                  CREATED         STATUS         PORTS                      NAMES
+5c2474294c3c   nginxinc/nginx-unprivileged:1.29-alpine   "/docker-entrypoint.…"   5 minutes ago   Up 5 minutes   127.0.0.1:8080->8080/tcp   td01-web
+td01-web
+td01-web
+--- après suppression ---
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+image_id=sha256:8059701048a6cc7d64e8ab2812a44be70161bfa9ecfc01d69e95b8ff2a648705
+-rwxr-xr-x 1 pierre_bdr pierre_bdr 493 Sep 30 14:43 scripts/td01-run.sh
+curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Could not connect to server
+curl_exit=7
