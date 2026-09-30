@@ -34,3 +34,12 @@
 
 ## Fichiers
 step2-*, step3-*, step4-*, step5-verify.txt, step5-cleanup.txt, evidence1.png
+
+
+## Vérification des résultats
+- ID d'origine et ID après redémarrage : identiques (`fef506bae907...`), car `start` relance le même conteneur.
+- ID recréé : différent (`5c2474294c3c...`), car `rm` a détruit l'ancien objet et le script en a créé un nouveau.
+- HTTP pendant l'exécution : 200 OK, nginx sert la page.
+- HTTP à l'arrêt : `curl: (7)`, plus aucun processus n'écoute sur 8080.
+- Port : `127.0.0.1:8080`, donc accessible seulement depuis la machine.
+- Contrôles finaux : `bash -n` sans erreur, conteneur absent, image présente.
