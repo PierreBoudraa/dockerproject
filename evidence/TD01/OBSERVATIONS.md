@@ -25,7 +25,6 @@
 - Les échecs curl (code 7) après stop et rm étaient attendus : ils prouvent que le service est arrêté.
 
 ## Pourquoi l'ID est conservé au démarrage mais change à la recréation
-(à reformuler avec vos mots)
 `docker stop` arrête seulement le processus du conteneur : l'objet conteneur, sa configuration et son système de fichiers restent, donc `docker start` relance le même objet avec le même ID. `docker rm` détruit l'objet. `docker run` en crée un nouveau à partir de l'image, et Docker lui attribue un nouvel ID. L'image, elle, n'est pas touchée par ces opérations : c'est pourquoi son ID n'a pas changé.
 
 ## État final
