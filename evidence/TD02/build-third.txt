@@ -1,0 +1,64 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.86kB done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#2 DONE 0.4s
+
+#3 docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
+#3 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e 0.1s done
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 505B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 267B done
+#6 DONE 0.0s
+
+#7 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#7 resolve docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b 0.1s done
+#7 CACHED
+
+#8 [builder 2/4] WORKDIR /build
+#8 CACHED
+
+#9 [builder 3/4] COPY requirements.txt ./
+#9 CACHED
+
+#10 [builder 4/4] RUN python -m venv /opt/venv  && /opt/venv/bin/pip install --require-hashes -r requirements.txt
+#10 CACHED
+
+#11 [runtime 2/6] RUN groupadd --gid 10001 app  && useradd --uid 10001 --gid 10001 --no-create-home --shell /usr/sbin/nologin app
+#11 DONE 1.0s
+
+#12 [runtime 3/6] WORKDIR /srv
+#12 DONE 0.1s
+
+#13 [runtime 4/6] COPY --from=builder /opt/venv /opt/venv
+#13 DONE 1.9s
+
+#14 [runtime 5/6] COPY wsgi.py gunicorn.conf.py ./
+#14 DONE 0.2s
+
+#15 [runtime 6/6] COPY app ./app
+#15 DONE 0.1s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 2.1s done
+#16 exporting manifest sha256:55a1a0e3a7d4e7fa895ea6950f2f57399bd796b2d9471a28046e54505df3203e 0.0s done
+#16 exporting config sha256:82b74e9f8881991e27510aee3847898d5b3cc9b017f1eb00fd40d0aa67b75b07 0.0s done
+#16 exporting attestation manifest sha256:a7348052cfdbf29edccb265e06e5da97a6f469aaaf099a1e40ffbda23c50315e
+#16 exporting attestation manifest sha256:a7348052cfdbf29edccb265e06e5da97a6f469aaaf099a1e40ffbda23c50315e 0.0s done
+#16 exporting manifest list sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901 0.0s done
+#16 naming to docker.io/library/delivery-api:80871b2d2cc527f94aa2f2dbe47e59ea2b6f5e79 done
+#16 unpacking to docker.io/library/delivery-api:80871b2d2cc527f94aa2f2dbe47e59ea2b6f5e79
+#16 unpacking to docker.io/library/delivery-api:80871b2d2cc527f94aa2f2dbe47e59ea2b6f5e79 1.2s done
+#16 DONE 3.6s
