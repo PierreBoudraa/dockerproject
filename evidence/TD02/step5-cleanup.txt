@@ -1,0 +1,9 @@
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS                        PORTS                      NAMES
+fa32d39891b0   abb19cde9713   "gunicorn --config g…"   About a minute ago   Up About a minute (healthy)   127.0.0.1:8080->8000/tcp   td02-api
+td02-api
+td02-api
+--- apres suppression ---
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+image_locale=sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901
+curl: (7) Failed to connect to 127.0.0.1 port 8080 after 0 ms: Could not connect to server
+curl_exit=7

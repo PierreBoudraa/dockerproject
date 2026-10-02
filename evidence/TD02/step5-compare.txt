@@ -1,0 +1,6 @@
+sha enregistre   : 80871b2d2cc527f94aa2f2dbe47e59ea2b6f5e79
+label revision   : 80871b2d2cc527f94aa2f2dbe47e59ea2b6f5e79
+label source     : https://github.com/PierreBoudraa/dockerProject
+/version (digest): {"application":"delivery-api","environment":"course-lab","git_sha":"80871b2d2cc527f94aa2f2dbe47e59ea2b6f5e79","version":"0.2.0"}
+conteneur image  : ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901
+release.env      : ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901
