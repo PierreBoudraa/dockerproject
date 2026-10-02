@@ -1,0 +1,23 @@
+== td03-postgres
+PortBindings={}
+Ports={"5432/tcp":null}
+Networks=td03-private 
+Memory=536870912 NanoCpus=1000000000 Pids=200
+User=70:70
+Mounts:
+  bind /run/desktop/mnt/host/wsl/docker-desktop-bind-mounts/Ubuntu/52f441d05b0f73666f53702f883dd3ec3b5d39e2f617c2cb6fc9fc8df40c2f3c -> /docker-entrypoint-initdb.d/01-init.sql rw=false
+  volume /var/lib/docker/volumes/td03-db-secret/_data -> /run/secrets rw=false
+  volume /var/lib/docker/volumes/td03-postgres-data/_data -> /var/lib/postgresql/data rw=true
+docker port: []
+== td03-delivery-api
+PortBindings={}
+Ports={"8000/tcp":null}
+Networks=td03-private 
+Memory=268435456 NanoCpus=500000000 Pids=100
+User=10001:10001
+Mounts:
+  volume /var/lib/docker/volumes/td03-db-secret/_data -> /run/secrets rw=false
+docker port: []
+--- etat
+td03-delivery-api Up About a minute (healthy)
+td03-postgres Up About a minute

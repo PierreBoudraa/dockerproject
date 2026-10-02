@@ -1,0 +1,4 @@
+--- /readyz depuis un pair temporaire (reseau td03-private)
+HTTP 200
+{"dependency":"postgres","status":"ready"}
+
