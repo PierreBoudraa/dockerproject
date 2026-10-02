@@ -1,0 +1,13 @@
+uid=10001(app) gid=10001(app) groups=10001(app)
+user=10001:10001 health=healthy state=running
+[2026-10-02 12:06:52 +0000] [1] [INFO] Starting gunicorn 23.0.0
+[2026-10-02 12:06:52 +0000] [1] [INFO] Listening at: http://0.0.0.0:8000 (1)
+[2026-10-02 12:06:52 +0000] [1] [INFO] Using worker: sync
+{"timestamp":"2026-10-02T12:06:52.036481+00:00","level":"INFO","service":"delivery-api","logger":"gunicorn.lifecycle","event":"gunicorn_ready","pid":1}
+[2026-10-02 12:06:52 +0000] [7] [INFO] Booting worker with pid: 7
+[2026-10-02 12:06:52 +0000] [8] [INFO] Booting worker with pid: 8
+{"timestamp":"2026-10-02T12:06:56.563098+00:00","level":"INFO","service":"delivery-api","logger":"app","message":"request_complete","event":"request_complete","request_id":"4d9e2c09-1717-4863-aa1e-63c68ea8a307","method":"GET","path":"/healthz","status":200,"duration_ms":0.15}
+{"timestamp":"2026-10-02T12:07:11.202706+00:00","level":"INFO","service":"delivery-api","logger":"app","message":"request_complete","event":"request_complete","request_id":"3590eed5-6e6b-4a0b-a71b-495739078e0e","method":"GET","path":"/healthz","status":200,"duration_ms":0.19}
+{"timestamp":"2026-10-02T12:07:11.228839+00:00","level":"INFO","service":"delivery-api","logger":"app","message":"request_complete","event":"request_complete","request_id":"0a4b525f-917b-4f98-b9d4-5e1ae3d8dacc","method":"GET","path":"/version","status":200,"duration_ms":0.16}
+{"timestamp":"2026-10-02T12:07:15.272139+00:00","level":"WARNING","service":"delivery-api","logger":"app","message":"readiness_failed","event":"readiness_failed","dependency":"postgres"}
+{"timestamp":"2026-10-02T12:07:15.273022+00:00","level":"INFO","service":"delivery-api","logger":"app","message":"request_complete","event":"request_complete","request_id":"6f779d0c-bce5-4f64-b634-ccbad88b1f8b","method":"GET","path":"/readyz","status":503,"duration_ms":4017.24}

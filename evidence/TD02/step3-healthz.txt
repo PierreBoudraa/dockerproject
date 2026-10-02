@@ -1,0 +1,12 @@
+=== /healthz ===
+HTTP/1.1 200 OK
+Server: gunicorn
+Date: Fri, 02 Oct 2026 12:07:11 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 45
+X-Request-ID: 3590eed5-6e6b-4a0b-a71b-495739078e0e
+
+{"application":"delivery-api","status":"ok"}
+
+curl_exit=0

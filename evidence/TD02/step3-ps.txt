@@ -1,0 +1,2 @@
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED         STATUS                            PORTS                      NAMES
+6430548cf383   delivery-api:eed0932a15b2a14c442bc709bd570c7e858c4e94   "gunicorn --config g…"   6 seconds ago   Up 4 seconds (health: starting)   127.0.0.1:8080->8000/tcp   td02-api
