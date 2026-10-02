@@ -1,0 +1,63 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 116B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${PYTHON_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#2 ...
+
+#3 [auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#2 DONE 2.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 685B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [1/3] FROM docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#6 resolve docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b 0.1s done
+#6 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 426B done
+#5 DONE 0.0s
+
+#7 [2/3] COPY . /ctx
+#7 DONE 0.1s
+
+#8 [3/3] RUN find /ctx -type f | sort
+#8 0.865 /ctx/.dockerignore
+#8 0.865 /ctx/Dockerfile
+#8 0.865 /ctx/README.md
+#8 0.865 /ctx/app/__init__.py
+#8 0.865 /ctx/app/config.py
+#8 0.865 /ctx/app/database.py
+#8 0.865 /ctx/app/logging_config.py
+#8 0.865 /ctx/gunicorn.conf.py
+#8 0.865 /ctx/requirements.in
+#8 0.865 /ctx/requirements.txt
+#8 0.865 /ctx/versions.env
+#8 0.865 /ctx/wsgi.py
+#8 DONE 0.9s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 0.2s done
+#9 exporting manifest sha256:95425b18ab18e01c1c353aeaf2fe6a0fd4f27095a033a28117f1cef8278dffbc 0.0s done
+#9 exporting config sha256:bbf3a2ce1c02778585795b4329cfcc4df46d6478b6541575a3a66e92cb113d67 0.0s done
+#9 exporting attestation manifest sha256:1769c5ab450dc2cbcbf89e104c0a145a39c68ffbdaa77f25104f23d1d8eed662 0.0s done
+#9 exporting manifest list sha256:aa2b5607f3f634f1a91e62a64456031d5f2bef13b147f122023d61a4cba54a55 0.0s done
+#9 naming to moby-dangling@sha256:aa2b5607f3f634f1a91e62a64456031d5f2bef13b147f122023d61a4cba54a55
+#9 naming to moby-dangling@sha256:aa2b5607f3f634f1a91e62a64456031d5f2bef13b147f122023d61a4cba54a55 done
+#9 unpacking to moby-dangling@sha256:aa2b5607f3f634f1a91e62a64456031d5f2bef13b147f122023d61a4cba54a55 0.0s done
+#9 DONE 0.3s
+
+ [33m1 warning found (use docker --debug to expand):
+[0m - InvalidDefaultArgInFrom: Default value for ARG ${PYTHON_IMAGE} results in empty or invalid base image name (line 2)

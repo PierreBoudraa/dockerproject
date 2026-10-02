@@ -1,0 +1,69 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.89kB 0.0s done
+#1 DONE 0.1s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#2 ...
+
+#3 [auth] docker/dockerfile:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#2 DONE 2.1s
+
+#4 docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
+#4 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e 0.0s done
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 0B / 11.98MB 0.2s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 1.05MB / 11.98MB 0.8s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 2.10MB / 11.98MB 1.4s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 3.15MB / 11.98MB 2.0s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 4.19MB / 11.98MB 2.6s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 5.24MB / 11.98MB 3.3s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 6.29MB / 11.98MB 4.1s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 7.34MB / 11.98MB 4.8s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 8.39MB / 11.98MB 5.6s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 9.44MB / 11.98MB 6.2s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 10.49MB / 11.98MB 6.7s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 11.53MB / 11.98MB 7.3s
+#4 sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 11.98MB / 11.98MB 7.6s done
+#4 extracting sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416
+#4 extracting sha256:96918c57e42509b97f10c074d80672ecdbd3bb7dcd38c1bd95960cf291207416 0.3s done
+#4 DONE 8.0s
+
+#5 resolve image config for docker-image://docker.io/docker/dockerfile:1.8.1@sha256:e87caa74dcb7d46cd820352bfea12591f3dba3ddc4285e19c7dcd13359f7cefd
+#5 DONE 0.7s
+
+#6 docker-image://docker.io/docker/dockerfile:1.8.1@sha256:e87caa74dcb7d46cd820352bfea12591f3dba3ddc4285e19c7dcd13359f7cefd
+#6 resolve docker.io/docker/dockerfile:1.8.1@sha256:e87caa74dcb7d46cd820352bfea12591f3dba3ddc4285e19c7dcd13359f7cefd 0.0s done
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 0B / 12.09MB 0.2s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 1.05MB / 12.09MB 0.8s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 2.10MB / 12.09MB 1.4s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 3.15MB / 12.09MB 1.7s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 4.19MB / 12.09MB 2.0s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 5.24MB / 12.09MB 2.3s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 6.29MB / 12.09MB 2.6s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 7.34MB / 12.09MB 2.9s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 8.39MB / 12.09MB 3.2s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 9.44MB / 12.09MB 3.6s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 10.49MB / 12.09MB 3.9s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 11.53MB / 12.09MB 4.4s
+#6 sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 12.09MB / 12.09MB 4.4s done
+#6 extracting sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532
+#6 extracting sha256:1d7e21b9eae3317824ebc8707e591a810a37dff6aff8e1d175f7d8c95a3aa532 0.2s done
+#6 DONE 4.7s
+
+#7 [internal] load metadata for docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#7 ...
+
+#8 [auth] library/python:pull token for registry-1.docker.io
+#8 DONE 0.0s
+
+#7 [internal] load metadata for docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#7 DONE 1.0s
+
+#9 [internal] load .dockerignore
+#9 transferring context: 685B done
+#9 DONE 0.0s
+Check complete, no warnings found.

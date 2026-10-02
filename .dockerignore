@@ -1,0 +1,39 @@
+# Minimal non-negotiable exclusions supplied for safety.
+.git
+.env
+.env.*
+secrets
+.docker-auth
+.gh-auth
+
+# Context policy: GitHub metadata, evidence, local envs, caches, logs, backups and tests excluded.
+
+# TD02 additions
+.github
+.gitignore
+evidence
+submission*
+*.zip
+*.tar
+*.tar.gz
+.venv
+venv
+env
+__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.coverage
+htmlcov
+*.log
+logs
+backups
+*.bak
+*.dump
+tests
+requirements-dev.*
+compose.yaml
+scripts
+db
+nginx
