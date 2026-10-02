@@ -1,0 +1,3 @@
+net=td03-private driver=bridge internal=false labels={"course.environment":"course-lab","course.lab":"TD03"}
+vol=td03-postgres-data labels={"course.environment":"course-lab","course.lab":"TD03"}
+vol=td03-db-secret labels={"course.environment":"course-lab","course.lab":"TD03"}

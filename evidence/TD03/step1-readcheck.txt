@@ -1,0 +1,10 @@
+postgres (70) :
+43
+API (10001:10001) :
+43
+inconnu (12345:12345), doit etre refuse :
+sh: can't open /run/secrets/postgres_password: Permission denied
+refuse (attendu)
+ecriture refusee (montage ro) :
+touch: /run/secrets/x: Read-only file system
+refuse (attendu)
