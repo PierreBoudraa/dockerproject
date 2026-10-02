@@ -1,0 +1,106 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.80kB 0.0s done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#2 ...
+
+#3 [auth] docker/dockerfile:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7
+#2 DONE 1.1s
+
+#4 docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
+#4 resolve docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e 0.1s done
+#4 CACHED
+
+#5 [internal] load metadata for docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#5 ...
+
+#6 [auth] library/python:pull token for registry-1.docker.io
+#6 DONE 0.0s
+
+#5 [internal] load metadata for docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#5 DONE 0.6s
+
+#7 [internal] load .dockerignore
+#7 transferring context: 505B done
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 267B done
+#8 DONE 0.0s
+
+#9 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#9 resolve docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b
+#9 resolve docker.io/library/python:3.12-slim@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b 0.0s done
+#9 CACHED
+
+#10 [builder 2/4] WORKDIR /build
+#10 DONE 0.1s
+
+#11 [builder 3/4] COPY requirements.txt ./
+#11 DONE 0.1s
+
+#12 [runtime 2/6] RUN groupadd --gid 10001 app  && useradd --uid 10001 --gid 10001 --no-create-home --shell /usr/sbin/nologin app
+#12 DONE 0.9s
+
+#13 [builder 4/4] RUN python -m venv /opt/venv  && /opt/venv/bin/pip install --require-hashes -r requirements.txt
+#13 ...
+
+#14 [runtime 3/6] WORKDIR /srv
+#14 DONE 0.1s
+
+#13 [builder 4/4] RUN python -m venv /opt/venv  && /opt/venv/bin/pip install --require-hashes -r requirements.txt
+#13 6.583 Collecting blinker==1.9.0 (from -r requirements.txt (line 7))
+#13 6.704   Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+#13 6.747 Collecting click==8.4.2 (from -r requirements.txt (line 11))
+#13 6.772   Downloading click-8.4.2-py3-none-any.whl (119 kB)
+#13 6.835 Collecting flask==3.1.2 (from -r requirements.txt (line 15))
+#13 6.851   Downloading flask-3.1.2-py3-none-any.whl (103 kB)
+#13 6.907 Collecting gunicorn==23.0.0 (from -r requirements.txt (line 19))
+#13 6.935   Downloading gunicorn-23.0.0-py3-none-any.whl (85 kB)
+#13 6.978 Collecting itsdangerous==2.2.0 (from -r requirements.txt (line 23))
+#13 7.002   Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#13 7.041 Collecting jinja2==3.1.6 (from -r requirements.txt (line 27))
+#13 7.054   Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#13 7.177 Collecting markupsafe==3.0.3 (from -r requirements.txt (line 31))
+#13 7.192   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#13 7.224 Collecting packaging==26.3 (from -r requirements.txt (line 125))
+#13 7.235   Downloading packaging-26.3-py3-none-any.whl (129 kB)
+#13 7.279 Collecting psycopg==3.2.9 (from -r requirements.txt (line 129))
+#13 7.293   Downloading psycopg-3.2.9-py3-none-any.whl (202 kB)
+#13 7.568 Collecting psycopg-binary==3.2.9 (from -r requirements.txt (line 133))
+#13 7.588   Downloading psycopg_binary-3.2.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.4 MB)
+#13 8.024      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 10.3 MB/s eta 0:00:00
+#13 8.063 Collecting typing-extensions==4.16.0 (from -r requirements.txt (line 200))
+#13 8.079   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#13 8.117 Collecting werkzeug==3.1.8 (from -r requirements.txt (line 204))
+#13 8.132   Downloading werkzeug-3.1.8-py3-none-any.whl (226 kB)
+#13 8.225 Installing collected packages: typing-extensions, psycopg-binary, packaging, markupsafe, itsdangerous, click, blinker, werkzeug, psycopg, jinja2, gunicorn, flask
+#13 9.403 Successfully installed blinker-1.9.0 click-8.4.2 flask-3.1.2 gunicorn-23.0.0 itsdangerous-2.2.0 jinja2-3.1.6 markupsafe-3.0.3 packaging-26.3 psycopg-3.2.9 psycopg-binary-3.2.9 typing-extensions-4.16.0 werkzeug-3.1.8
+#13 DONE 9.6s
+
+#15 [runtime 4/6] COPY --from=builder /opt/venv /opt/venv
+#15 DONE 0.6s
+
+#16 [runtime 5/6] COPY wsgi.py gunicorn.conf.py ./
+#16 DONE 0.1s
+
+#17 [runtime 6/6] COPY app ./app
+#17 DONE 0.1s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 1.8s done
+#18 exporting manifest sha256:d9f3049650a8497ba1b71a8b7519895761cd3e27bb41651ddb0f8aff4d961dc9 0.0s done
+#18 exporting config sha256:8685f72bda8cea260203b23b27d85ac2147af31f9f7b8b07178f863dd1f2dc95 0.0s done
+#18 exporting attestation manifest sha256:70cc7c66c014d2a7291ddc87900d8756980e7e098e95424b29bb54118048b630 0.0s done
+#18 exporting manifest list sha256:14fa4f2ccdb0ab6daef783630e83eeef334252de38b8f0309056f8442328b38f 0.0s done
+#18 naming to docker.io/library/delivery-api:eed0932a15b2a14c442bc709bd570c7e858c4e94 done
+#18 unpacking to docker.io/library/delivery-api:eed0932a15b2a14c442bc709bd570c7e858c4e94
+#18 unpacking to docker.io/library/delivery-api:eed0932a15b2a14c442bc709bd570c7e858c4e94 0.8s done
+#18 DONE 2.8s
