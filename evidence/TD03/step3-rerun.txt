@@ -1,0 +1,4 @@
+postgres pret apres 1s
+NAMES               STATUS
+td03-delivery-api   Up 5 seconds (health: starting)
+td03-postgres       Up 6 seconds

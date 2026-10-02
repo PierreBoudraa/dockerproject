@@ -1,0 +1,14 @@
+IDENTIQUE : db.txt
+IDENTIQUE : api-item.json
+IDENTIQUE : api-item.status
+IDENTIQUE : api-list.json
+IDENTIQUE : api-list.status
+IDENTIQUE : volumes.txt
+--- ID de conteneur (doivent changer) :
+ID DIFFERENTS (attendu)
+--- avant :
+/td03-postgres 28a37ac684437bbe4c472fa67
+/td03-delivery-api 11ce7b29a66cc4b6765ec
+--- apres :
+/td03-postgres 83bcb74c80a52ecd3c6f0370e
+/td03-delivery-api 502de2c45ed7c171b6fc0
