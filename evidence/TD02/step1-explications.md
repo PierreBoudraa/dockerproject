@@ -10,4 +10,3 @@
 - **Exec form** : Gunicorn est le PID 1 et reçoit directement SIGTERM, ce qui permet un arrêt propre.
 - **`.dockerignore`** : `.git`, `evidence`, `tests` et `.env*` restent hors du contexte (pas de fuite de secrets, build plus rapide). Preuve : `step1-context.txt` ne liste que 12 fichiers utiles.
 - **Warning `InvalidDefaultArgInFrom`** : il vient du Dockerfile temporaire de vérification (ARG sans valeur par défaut), pas du vrai Dockerfile. Il est sans conséquence.
-- **Note d'honnêteté** : le Dockerfile et ces explications ont été rédigés avec l'aide de l'assistant, puis relus.
