@@ -1,0 +1,22 @@
+;
+; Archive created at 2026-10-02 14:09:49 UTC
+;     dbname: delivery
+;     TOC Entries: 11
+;     Compression: gzip
+;     Dump Version: 1.15-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 16.15
+;     Dumped by pg_dump version: 16.15
+;
+;
+; Selected TOC Entries:
+;
+216; 1259 16386 TABLE public items delivery
+215; 1259 16385 SEQUENCE public items_id_seq delivery
+3456; 0 0 SEQUENCE OWNED BY public items_id_seq delivery
+3301; 2604 16389 DEFAULT public items id delivery
+3449; 0 16386 TABLE DATA public items delivery
+3457; 0 0 SEQUENCE SET public items_id_seq delivery
+3304; 2606 16392 CONSTRAINT public items items_pkey delivery

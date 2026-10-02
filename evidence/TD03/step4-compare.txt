@@ -1,0 +1,3 @@
+IDENTIQUE : donnees restaurees = donnees d'origine
+IDENTIQUE : base de travail inchangee
+IDENTIQUE : element API inchange

@@ -1,0 +1,3 @@
+td03-restore	Up 22 minutes
+td03-delivery-api	Up About an hour (healthy)
+td03-postgres	Up About an hour

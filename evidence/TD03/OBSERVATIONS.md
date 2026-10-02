@@ -18,3 +18,12 @@
 
 ## Pourquoi cela prouve la persistance
 Un ID de conteneur different prouve que les conteneurs d'origine, avec leur couche inscriptible, ont ete detruits et remplaces. Si les donnees etaient dans cette couche, elles auraient disparu et PostgreSQL aurait reinitialise une base vide. Elles sont revenues identiques : elles vivent dans le volume nomme td03-postgres-data, dont le cycle de vie est independant de celui des conteneurs. Un simple redemarrage ne prouverait rien : le conteneur et sa couche inscriptible survivent, donc les donnees reviendraient meme sans volume.
+
+## Etape 4 : sauvegarde et restauration
+- Sauvegarde : pg_dump au format personnalise dans backups/td03.dump (ignore par git). Fichier non vide, contenu liste avec pg_restore --list (11 entrees, dont TABLE DATA public items), SHA-256 enregistre (step4-sha256.txt).
+- Restauration : conteneur td03-restore separe, etiquete, sans reseau ni port hote, avec un volume jetable td03-restore-data. Checksum verifie avant pg_restore.
+- Comparaison : les lignes id 1 (SQL) et id 2 (API) restaurees sont identiques aux originales (step4-compare.txt). Base de travail inchangee, API toujours en HTTP 200.
+- Nettoyage : seuls td03-restore et td03-restore-data ont ete supprimes, sans prune. Le dump est conserve.
+
+## Pourquoi cela prouve la sauvegarde
+Une sauvegarde n'est prouvee que si on sait la restaurer. Le fichier non vide et la liste de son contenu montrent qu'il est lisible, mais seule la restauration dans une base vide et la comparaison des donnees prouvent qu'il est utilisable. Le checksum verifie que le fichier n'a pas ete altere entre la sauvegarde et la restauration. L'absence de reseau empeche le conteneur de restauration de toucher la base de travail ou de sortir des donnees.
