@@ -25,6 +25,8 @@ ARG SOURCE_URL=unknown
 LABEL org.opencontainers.image.version="${APP_VERSION}" \
       org.opencontainers.image.source="${SOURCE_URL}" \
       org.opencontainers.image.revision="${GIT_SHA}"
+ENV APP_VERSION="${APP_VERSION}" \
+    GIT_SHA="${GIT_SHA}"
 
 ENV PATH="/opt/venv/bin:${PATH}" \
     PYTHONDONTWRITEBYTECODE=1 \
