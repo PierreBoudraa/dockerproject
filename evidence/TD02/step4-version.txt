@@ -1,0 +1,11 @@
+=== /version ===
+HTTP/1.1 200 OK
+Server: gunicorn
+Date: Fri, 02 Oct 2026 12:27:23 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 129
+X-Request-ID: 4803a7c7-9408-4490-949b-b0afaab3045b
+
+{"application":"delivery-api","environment":"course-lab","git_sha":"80871b2d2cc527f94aa2f2dbe47e59ea2b6f5e79","version":"0.2.0"}
+curl_exit=0

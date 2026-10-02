@@ -1,0 +1,4 @@
+ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901: Pulling from pierreboudraa/dockerproject/delivery-api
+Digest: sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901
+Status: Image is up to date for ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901
+ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901

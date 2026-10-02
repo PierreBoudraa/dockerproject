@@ -1,0 +1,11 @@
+=== /readyz ===
+HTTP/1.1 503 SERVICE UNAVAILABLE
+Server: gunicorn
+Date: Fri, 02 Oct 2026 12:27:27 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 47
+X-Request-ID: 7aac9dc4-4342-4227-a743-71b075baf488
+
+{"dependency":"postgres","status":"not_ready"}
+curl_exit=0
