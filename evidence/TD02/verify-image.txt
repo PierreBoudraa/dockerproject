@@ -1,0 +1,6 @@
+user=10001:10001
+revision=80871b2d2cc527f94aa2f2dbe47e59ea2b6f5e79
+source=https://github.com/PierreBoudraa/dockerProject
+version=0.2.0
+health={"Test":["CMD","python","-c","import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2)"],"Interval":30000000000,"Timeout":3000000000,"StartPeriod":10000000000,"Retries":3}
+cmd=["gunicorn","--config","gunicorn.conf.py","wsgi:application"]
