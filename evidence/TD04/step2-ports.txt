@@ -1,0 +1,3 @@
+delivery-api 8000/tcp
+postgres 5432/tcp
+proxy 127.0.0.1:8080->8080/tcp

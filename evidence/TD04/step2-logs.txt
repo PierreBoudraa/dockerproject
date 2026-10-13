@@ -1,0 +1,24 @@
+delivery-api-1  | [2026-10-13 16:20:15 +0000] [1] [INFO] Starting gunicorn 23.0.0
+delivery-api-1  | [2026-10-13 16:20:15 +0000] [1] [INFO] Listening at: http://0.0.0.0:8000 (1)
+proxy-1         | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+proxy-1         | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+proxy-1         | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+proxy-1         | 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+proxy-1         | 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf differs from the packaged version
+proxy-1         | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+proxy-1         | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+proxy-1         | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+proxy-1         | /docker-entrypoint.sh: Configuration complete; ready for start up
+proxy-1         | 172.19.0.1 - - [13/Oct/2026:16:20:35 +0000] "GET /healthz HTTP/1.1" 200 45 "-" "curl/8.18.0"
+proxy-1         | 172.19.0.1 - - [13/Oct/2026:16:20:35 +0000] "GET /readyz HTTP/1.1" 200 43 "-" "curl/8.18.0"
+proxy-1         | 172.19.0.1 - - [13/Oct/2026:16:20:35 +0000] "GET /version HTTP/1.1" 200 129 "-" "curl/8.18.0"
+proxy-1         | 172.19.0.1 - - [13/Oct/2026:16:20:37 +0000] "GET /api/items/2 HTTP/1.1" 200 89 "-" "curl/8.18.0"
+delivery-api-1  | [2026-10-13 16:20:15 +0000] [1] [INFO] Using worker: sync
+delivery-api-1  | {"timestamp":"2026-10-13T16:20:15.710551+00:00","level":"INFO","service":"delivery-api","logger":"gunicorn.lifecycle","event":"gunicorn_ready","pid":1}
+delivery-api-1  | [2026-10-13 16:20:15 +0000] [7] [INFO] Booting worker with pid: 7
+delivery-api-1  | [2026-10-13 16:20:15 +0000] [8] [INFO] Booting worker with pid: 8
+delivery-api-1  | {"timestamp":"2026-10-13T16:20:28.209457+00:00","level":"INFO","service":"delivery-api","logger":"app","message":"request_complete","event":"request_complete","request_id":"17d9f0b1-8ec5-4df8-9ff8-51cae03f80eb","method":"GET","path":"/readyz","status":200,"duration_ms":35.6}
+delivery-api-1  | {"timestamp":"2026-10-13T16:20:35.411256+00:00","level":"INFO","service":"delivery-api","logger":"app","message":"request_complete","event":"request_complete","request_id":"375f83ba-74bc-4563-a983-d33adf3d11dc","method":"GET","path":"/healthz","status":200,"duration_ms":0.15}
+delivery-api-1  | {"timestamp":"2026-10-13T16:20:35.472607+00:00","level":"INFO","service":"delivery-api","logger":"app","message":"request_complete","event":"request_complete","request_id":"1a414022-49ab-46e1-b000-faf01adfcde4","method":"GET","path":"/readyz","status":200,"duration_ms":33.38}
+delivery-api-1  | {"timestamp":"2026-10-13T16:20:35.500137+00:00","level":"INFO","service":"delivery-api","logger":"app","message":"request_complete","event":"request_complete","request_id":"b3e190b8-16b7-48e5-8463-7402c9ab3fdc","method":"GET","path":"/version","status":200,"duration_ms":0.15}
+delivery-api-1  | {"timestamp":"2026-10-13T16:20:37.215191+00:00","level":"INFO","service":"delivery-api","logger":"app","message":"request_complete","event":"request_complete","request_id":"10f66c86-2a9d-44ea-85f8-cdd7bf417a41","method":"GET","path":"/api/items/2","status":200,"duration_ms":21.16}
