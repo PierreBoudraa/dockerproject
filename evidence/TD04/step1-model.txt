@@ -1,0 +1,10 @@
+services :
+postgres
+delivery-api
+proxy
+--- ports publiés (attendu : un seul bloc, 127.0.0.1:8080, proxy) :
+1
+--- volumes externes conservés :
+td03-db-secret
+td03-postgres-data
+--- reste TD03 (conteneurs/réseaux, attendu : vide) :

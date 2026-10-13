@@ -1,0 +1,146 @@
+name: docker-delivery
+services:
+  delivery-api:
+    build:
+      context: /home/pierre_bdr/project_starter
+      dockerfile: Dockerfile
+      args:
+        APP_VERSION: 0.1.0-dev
+        GIT_SHA: local
+    cap_drop:
+      - ALL
+    cpus: 0.5
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+    environment:
+      APP_ENVIRONMENT: course-lab
+      DATABASE_HOST: postgres
+      DATABASE_PORT: "5432"
+      POSTGRES_DB: delivery
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_USER: delivery
+    expose:
+      - "8000"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz',
+          timeout=2)
+      timeout: 3s
+      interval: 15s
+      retries: 3
+      start_period: 15s
+    image: ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901
+    mem_limit: "268435456"
+    memswap_limit: "268435456"
+    networks:
+      data: null
+      edge: null
+    pids_limit: 100
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 20s
+    volumes:
+      - type: volume
+        source: db-secret
+        target: /run/secrets
+        read_only: true
+        volume: {}
+  postgres:
+    cap_drop:
+      - ALL
+    cpus: 1
+    environment:
+      POSTGRES_DB: delivery
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_USER: delivery
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -h 127.0.0.1 -p 5432 -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      timeout: 3s
+      interval: 10s
+      retries: 5
+      start_period: 20s
+    image: postgres:16-alpine@sha256:1a66d744c1b459e13b05a8fca341da84cb63383e99ce262210efee5a319d4551
+    mem_limit: "536870912"
+    memswap_limit: "536870912"
+    networks:
+      data: null
+    pids_limit: 200
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 30s
+    user: 70:70
+    volumes:
+      - type: volume
+        source: postgres-data
+        target: /var/lib/postgresql/data
+        volume: {}
+      - type: volume
+        source: db-secret
+        target: /run/secrets
+        read_only: true
+        volume: {}
+      - type: bind
+        source: /home/pierre_bdr/project_starter/db/init/001-schema.sql
+        target: /docker-entrypoint-initdb.d/001-schema.sql
+        read_only: true
+        bind: {}
+  proxy:
+    cpus: 0.25
+    depends_on:
+      delivery-api:
+        condition: service_healthy
+        required: true
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -q
+        - -O
+        - /dev/null
+        - http://127.0.0.1:8080/nginx-health
+      timeout: 3s
+      interval: 15s
+      retries: 3
+      start_period: 5s
+    image: nginxinc/nginx-unprivileged:1.29-alpine@sha256:8059701048a6cc7d64e8ab2812a44be70161bfa9ecfc01d69e95b8ff2a648705
+    mem_limit: "67108864"
+    memswap_limit: "67108864"
+    networks:
+      edge: null
+    pids_limit: 50
+    ports:
+      - mode: ingress
+        host_ip: 127.0.0.1
+        target: 8080
+        published: "8080"
+        protocol: tcp
+    restart: unless-stopped
+    stop_grace_period: 10s
+    volumes:
+      - type: bind
+        source: /home/pierre_bdr/project_starter/nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+        read_only: true
+        bind: {}
+networks:
+  data:
+    name: docker-delivery_data
+    internal: true
+  edge:
+    name: docker-delivery_edge
+volumes:
+  db-secret:
+    name: td03-db-secret
+    external: true
+  postgres-data:
+    name: td03-postgres-data
+    external: true
