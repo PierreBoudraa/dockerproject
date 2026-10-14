@@ -1,0 +1,11 @@
+proxy-1  | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+proxy-1  | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+proxy-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+proxy-1  | 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+proxy-1  | 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf differs from the packaged version
+proxy-1  | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+proxy-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+proxy-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+proxy-1  | /docker-entrypoint.sh: Configuration complete; ready for start up
+proxy-1  | 2026/10/13 16:29:34 [error] 29#29: *2 delivery-apis could not be resolved (2: Server failure), client: 172.19.0.1, server: _, request: "GET /healthz HTTP/1.1", host: "127.0.0.1:8080"
+proxy-1  | 172.19.0.1 - - [13/Oct/2026:16:29:34 +0000] "GET /healthz HTTP/1.1" 502 150 "-" "curl/8.18.0"
