@@ -1,0 +1,4 @@
+== Application (via le proxy)
+curl: (22) The requested URL returned error: 502
+FAIL: /healthz injoignable ou non 200 via le proxy
+exit=1
