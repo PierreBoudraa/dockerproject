@@ -1,0 +1,41 @@
+=== Hôte
+Linux 6.18.33.2-microsoft-standard-WSL2
+default
+client=29.8.1 server=29.8.1 os=linux
+security=["name=seccomp,profile=builtin","name=cgroupns"] rootless-check=[name=seccomp,profile=builtin name=cgroupns]
+uid=1000(pierre_bdr) gid=1000(pierre_bdr) groups=1000(pierre_bdr),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users),1001(docker)
+=== Socket Docker (qui peut piloter le démon ?)
+srw-rw---- 1 root docker 0 Oct 14 16:03 /var/run/docker.sock
+=== Un conteneur monte-t-il le socket ?
+0
+=== Ports en écoute sur l'hôte (WSL)
+LISTEN 0      4096        127.0.0.1:8080      0.0.0.0:*   
+=== Fichier de mots de passe : hôte
+drwx------ 2 pierre_bdr pierre_bdr 4096 Oct  2 14:48 secrets
+total 4
+-rw------- 1 pierre_bdr pierre_bdr 43 Oct  2 14:48 postgres_password
+=== Volume secret : listing, droits, propriétaire (contenu non lu)
+total 4
+-r--r-----    1 70       10001           43 Oct  2 12:49 postgres_password
+=== Réseaux Compose
+data internal=true conteneurs=docker-delivery-postgres-1 docker-delivery-delivery-api-1 
+edge internal=false conteneurs=docker-delivery-proxy-1 docker-delivery-delivery-api-1 
+=== Durcissement réel par conteneur
+proxy user=101 readonly=false capdrop=null capadd=null secopt=null tmpfs=null privileged=false mem=67108864 pids=50
+delivery-api user=10001:10001 readonly=false capdrop=["ALL"] capadd=null secopt=["no-new-privileges:true"] tmpfs=null privileged=false mem=268435456 pids=100
+postgres user=70:70 readonly=false capdrop=["ALL"] capadd=null secopt=["no-new-privileges:true"] tmpfs=null privileged=false mem=536870912 pids=200
+=== Test d'écriture dans le système de fichiers (API, proxy)
+api: /tmp inscriptible
+touch: cannot touch '/app/t': No such file or directory
+uid=10001(app) gid=10001(app) groups=10001(app)
+proxy: /tmp inscriptible
+uid=101(nginx) gid=101(nginx) groups=101(nginx)
+=== Dépendances d'exécution déclarées
+# Direct runtime dependencies. Compile with Python 3.12 and pip-tools 7.6.1.
+Flask==3.1.2
+gunicorn==23.0.0
+psycopg[binary]==3.2.9
+=== Fraîcheur du lien d'image
+"org.opencontainers.image.revision":"80871b2d2cc527f94aa2f2dbe47e59ea2b6f5e79"
+"org.opencontainers.image.source":"https://github.com/PierreBoudraa/dockerProject"
+"org.opencontainers.image.version":"0.2.0"}

@@ -1,0 +1,35 @@
+=== T1 démon : port TCP du démon en écoute dans WSL ? (attendu : aucun)
+aucun port 2375/2376 en écoute
+=== T2 réseau BD : le proxy peut-il résoudre postgres ? (attendu : non)
+postgres non résolu depuis le proxy
+=== T3 sortie Internet depuis l'API (edge n'est pas internal)
+API: sortie Internet POSSIBLE
+=== T4 sortie Internet depuis postgres (réseau internal)
+postgres: sortie BLOQUEE
+=== T5 secret : lecture/écriture par l'API, présence côté proxy (contenu non lu)
+api: lecture OK (attendu)
+api: secret en lecture seule
+ls: /run/secrets: No such file or directory
+=== T6 proxy : écriture dans /etc/nginx et sur nginx.conf
+drwxrwxr-x    1 nginx    root          4096 Oct 14 14:06 /etc/nginx
+sh: can't create /etc/nginx/nginx.conf: Permission denied
+proxy: ECRITURE possible dans /etc/nginx
+=== T7 API : répertoire de travail et écriture
+workdir=/srv
+touch: cannot touch '/srv/probe': Permission denied
+api: écriture refusée dans /srv
+touch: cannot touch '/usr/probe': Permission denied
+api: /usr protégé
+=== T8 identité de l'image : digest local et commit déclaré
+["delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901","ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901"]
+commit
+=== T9 dépendances : versions installées vs épinglées
+flask 3.1.2
+gunicorn 23.0.0
+psycopg 3.2.9
+psycopg-binary 3.2.9
+174
+flask==3.1.2 \
+gunicorn==23.0.0 \
+psycopg==3.2.9 \
+psycopg-binary==3.2.9 \
