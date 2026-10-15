@@ -65,3 +65,10 @@ Contrôles en place (testés) : API uid 10001, CapEff 0, NoNewPrivs 1, racine en
 - Les 99 MEDIUM, 70 LOW et 3 UNKNOWN ne sont pas triés.
 - Les descriptions complètes des CVE ne sont pas lues ; la date de construction de la base Trivy n'est pas enregistrée (voir OBSERVATIONS.md).
 - L'atteignabilité est un raisonnement, sauf les points marqués testés.
+
+## Mise à jour : atteignabilité mesurée (reach-check.txt, reach-workers.txt)
+- libssl et libcrypto : 5 mappages chacune dans PID 1, donc chargées (testé). Les paquets libssl3t64, openssl et openssl-provider-legacy sont à traiter comme atteignables. Correctif disponible (3.5.7-1~deb13u3) : décision de reconstruction à prendre avec une échéance (voir ci-dessous).
+- libpcre2 n'apparaît dans les mappages d'aucun processus de l'API (PID 1 et workers) au moment du test. Une bibliothèque pouvant être chargée plus tard, je ne conclus pas à l'inaccessibilité.
+- libsystemd, libudev, libblkid, libmount, libuuid, libsmartcols, libncursesw, libtinfo et libacl : 0 mappage dans PID 1 (testé).
+- Binaires setuid présents dans l'image (reach-check.txt) : inutilisables pour élever les privilèges tant que NoNewPrivs=1 et CapEff=0 (api-identity.txt). Cette protection vient de compose.yaml, pas de l'image.
+- Limite : un mappage montre qu'une bibliothèque est chargée, pas qu'une fonction vulnérable est appelée.

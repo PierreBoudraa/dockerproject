@@ -1,0 +1,4 @@
+1 [/opt/venv/bin/python /opt/venv/bin/gunic] libpcre2=0 libssl=5
+277 [sh -c for p in /proc/[0-9]*; do n=$(tr "] libpcre2=0 libssl=0
+7 [/opt/venv/bin/python /opt/venv/bin/gunic] libpcre2=0 libssl=13
+8 [/opt/venv/bin/python /opt/venv/bin/gunic] libpcre2=0 libssl=13
