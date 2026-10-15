@@ -1,0 +1,10 @@
+=== T10 rôle utilisé par l'API : superutilisateur ?
+delivery rolsuper=true
+=== T11 proxy -> postgres par IP (172.18.0.3:5432) (attendu : INJOIGNABLE)
+proxy->postgres INJOIGNABLE
+--- contrôle positif : API -> postgres par IP (attendu : ATTEIGNABLE)
+api->postgres ATTEIGNABLE
+=== T12 proxy : montages (flag rw) et droits du fichier sur l'hôte
+/etc/nginx/nginx.conf rw=false
+
+-rwxr-xr-x 1 pierre_bdr pierre_bdr 1381 Oct 14 12:18 nginx/nginx.conf
