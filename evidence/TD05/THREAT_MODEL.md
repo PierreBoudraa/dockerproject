@@ -33,14 +33,14 @@ Statut : "observé" = vu dans une sortie ; "prévu" = pas encore appliqué.
 - Abus probable : réutiliser le mot de passe pour se connecter à la base.
 - Contrôle : volume monté en lecture seule dans api et postgres, absent du proxy ; 440 dans le volume ; copie hôte en 600 dans un dossier 700, ignorée par Git ; recherche du mot de passe dans les preuves à chaque commit (0 occurrence).
 - Test pour réfuter : écriture refusée depuis l'API (threat-tests.txt T5) ; pas de /run/secrets dans le proxy (T5) ; git ls-files secrets/ vide.
-- Hypothèse à vérifier : le rôle delivery est superutilisateur (créé par POSTGRES_USER). Test T10 dans threat-tests-2.txt, réfutée si rolsuper=f. Si rolsuper=t, une fuite du mot de passe donne tous les droits sur la base.
+- Constat (threat-tests-2.txt, T10) : le rôle delivery est superutilisateur (rolsuper=true), car créé par POSTGRES_USER. Une fuite du mot de passe, ou une API compromise, donne tous les droits sur la base. Risque ouvert : un rôle applicatif limité aux tables serait prévu (compromis 3).
 
 ## 4. Système de fichiers API et proxy
 - Chemin d'attaque : exécution de code dans l'API ou dans nginx, puis écriture ou persistance dans le conteneur.
 - Abus probable : déposer un outil, modifier la configuration, élever ses privilèges.
 - Contrôle observé : API en uid 10001, cap_drop ALL, no-new-privileges ; /srv et /usr non inscriptibles (threat-tests.txt T7) ; proxy en uid 101, nginx.conf monté en :ro dans compose.yaml et non modifiable (T6).
 - Écarts observés : rootfs non read-only pour les trois services ; proxy sans cap_drop ni no-new-privileges ; /etc/nginx inscriptible par l'utilisateur nginx (T6) ; /tmp inscriptible (nécessaire).
-- Test pour réfuter : T6 et T7, plus T12 (threat-tests-2.txt) pour savoir si le refus sur nginx.conf vient du flag :ro ou des droits du fichier sur l'hôte.
+- Test pour réfuter : T6 et T7, plus T12 (threat-tests-2.txt) : nginx.conf est monté rw=false, donc le refus vient du montage :ro.
 - Statut : read_only avec tmpfs, cap_drop et no-new-privileges sur le proxy sont prévus. Test de réfutation prévu : rejouer T6, T7 et la régression après le changement.
 
 ## 5. Identité de l'image
@@ -63,3 +63,5 @@ Statut : "observé" = vu dans une sortie ; "prévu" = pas encore appliqué.
 
 ## Ce que ce modèle ne couvre pas
 Pas de scan de vulnérabilités, pas de test de charge, pas d'analyse de l'hôte Windows ni de Docker Desktop lui-même.
+
+3. Rôle applicatif superutilisateur (à trancher). Le rôle delivery sert à l'initialisation et à l'API. Le garder est simple et cohérent avec les données TD03. Coût : une compromission de l'API donne tous les droits SQL. Alternative : un second rôle limité aux SELECT/INSERT/UPDATE sur items. Elle demande de changer le schéma et le secret, donc je la repousse tant que les volumes TD03 doivent rester intacts.
