@@ -1,0 +1,1 @@
+proxy readonly=true capdrop=["ALL"]

@@ -1,0 +1,30 @@
+=== Bibliothèques chargées dans le processus API (PID 1, parent des workers)
+libssl mappings=5
+libcrypto mappings=5
+libpcre2 mappings=0
+libsystemd mappings=0
+libudev mappings=0
+libblkid mappings=0
+libmount mappings=0
+libuuid mappings=0
+libsmartcols mappings=0
+libncursesw mappings=0
+libtinfo mappings=0
+libacl mappings=0
+=== Binaires setuid/setgid dans l'image API
+/usr/sbin/unix_chkpwd
+/usr/bin/umount
+/usr/bin/gpasswd
+/usr/bin/expiry
+/usr/bin/chfn
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/su
+/usr/bin/chsh
+/usr/bin/chage
+/usr/bin/mount
+=== Outils util-linux présents ?
+-rwxr-xr-x 1 root root 92552 Jul 31 15:34 /bin/login
+-rwsr-xr-x 1 root root 72072 Jul 31 15:34 /bin/mount
+-rwsr-xr-x 1 root root 84360 Jul 31 15:34 /bin/su
+-rwxr-xr-x 1 root root 92552 Jul 31 15:34 /usr/bin/login
