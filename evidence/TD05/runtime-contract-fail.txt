@@ -1,0 +1,4 @@
+PASS: api : cap_drop ALL, no-new-privileges, non root (10001:10001), memoire/pids/cpu bornes
+PASS: proxy : cap_drop ALL, no-new-privileges, non root (101:101), memoire/pids/cpu bornes
+FAIL: postgres : cap_drop ALL absent
+exit_code=1

@@ -1,0 +1,11 @@
+PASS: api : cap_drop ALL, no-new-privileges, non root (10001:10001), memoire/pids/cpu bornes
+PASS: proxy : cap_drop ALL, no-new-privileges, non root (101:101), memoire/pids/cpu bornes
+PASS: postgres : cap_drop ALL, no-new-privileges, non root (70:70), memoire/pids/cpu bornes
+PASS: api et postgres : aucun port publie
+PASS: proxy : 127.0.0.1:8080 uniquement
+PASS: api et proxy : racine en lecture seule
+PASS: secret monte en lecture seule dans api et postgres
+PASS: secret absent du proxy
+PASS: postgres : volume de donnees inscriptible
+PASS: reseau data internal
+PASS: contrat d'execution respecte

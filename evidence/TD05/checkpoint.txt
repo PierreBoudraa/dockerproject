@@ -1,0 +1,43 @@
+PASS: image en cours = digest scanné
+PASS: digest scanné = release.env
+PASS: liveness, readiness, and release-identity checks succeeded
+== Application (via le proxy)
+PASS: /healthz ok
+PASS: /readyz ready (postgres)
+PASS: /version delivery-api
+== Persistance (marqueur TD3, id 2)
+PASS: element API 2 identique a TD3
+PASS: liste API identique a TD3
+PASS: lignes SQL identiques a TD3
+== Isolation
+PASS: postgres et delivery-api : aucun port publie
+PASS: proxy publie uniquement 127.0.0.1:8080
+PASS: 5432 et 8000 injoignables depuis l'hote
+== Identite de release
+PASS: image API = release.env
+PASS: imageID = digest
+PASS: git_sha = revision de l'image
+PASS: definitions = known-good
+PASS: regression complete
+PASS: api : cap_drop ALL, no-new-privileges, non root (10001:10001), memoire/pids/cpu bornes
+PASS: proxy : cap_drop ALL, no-new-privileges, non root (101:101), memoire/pids/cpu bornes
+PASS: postgres : cap_drop ALL, no-new-privileges, non root (70:70), memoire/pids/cpu bornes
+PASS: api et postgres : aucun port publie
+PASS: proxy : 127.0.0.1:8080 uniquement
+PASS: api et proxy : racine en lecture seule
+PASS: secret monte en lecture seule dans api et postgres
+PASS: secret absent du proxy
+PASS: postgres : volume de donnees inscriptible
+PASS: reseau data internal
+PASS: contrat d'execution respecte
+PASS: API en uid 10001
+PASS: secret lisible par l'API
+touch: cannot touch '/srv/td05-checkpoint-denied': Read-only file system
+exit_code=1
+PASS: écriture refusée (Read-only file system)
+evidence/TD05/sbom.cdx.json: OK
+evidence/TD05/vulnerabilities.json: OK
+PASS: SBOM CycloneDX, scan JSON et TRIAGE.md présents
+PASS: valeur du mot de passe absente des preuves
+PASS: allowed behavior, denied write and saved scan checks agree
+exit=0
