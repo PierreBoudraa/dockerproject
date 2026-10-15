@@ -1,0 +1,20 @@
+scan_start_utc=2026-10-15T20:03:57Z
+trivy_image=aquasec/trivy:0.73.0@sha256:4bbf3824d974b70f27631005e2e6194d4d8fbd6e72c4a9e04cf521e25c5cb07f
+Unable to find image 'aquasec/trivy:0.73.0@sha256:4bbf3824d974b70f27631005e2e6194d4d8fbd6e72c4a9e04cf521e25c5cb07f' locally
+docker.io/aquasec/trivy@sha256:4bbf3824d974b70f27631005e2e6194d4d8fbd6e72c4a9e04cf521e25c5cb07f: Pulling from aquasec/trivy
+7e7f7bac057d: Pulling fs layer
+5777cb54a463: Pulling fs layer
+ea86c971983e: Pulling fs layer
+55afa1ecc21d: Pulling fs layer
+5777cb54a463: Download complete
+55afa1ecc21d: Download complete
+55afa1ecc21d: Pull complete
+7e7f7bac057d: Download complete
+7e7f7bac057d: Pull complete
+ea86c971983e: Download complete
+5777cb54a463: Pull complete
+ea86c971983e: Pull complete
+Digest: sha256:4bbf3824d974b70f27631005e2e6194d4d8fbd6e72c4a9e04cf521e25c5cb07f
+Status: Downloaded newer image for aquasec/trivy@sha256:4bbf3824d974b70f27631005e2e6194d4d8fbd6e72c4a9e04cf521e25c5cb07f
+Version: 0.73.0
+scan_end_utc=2026-10-15T20:04:49Z
