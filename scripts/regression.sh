@@ -56,7 +56,7 @@ img=$(docker inspect "$API" --format '{{.Config.Image}}')
 [ "$(docker inspect "$API" --format '{{.Image}}')" = "sha256:${DELIVERY_API_IMAGE##*@sha256:}" ] || fail "imageID != digest"; ok "imageID = digest"
 rev=$(docker inspect "$API" --format '{{index .Config.Labels "org.opencontainers.image.revision"}}')
 [ "$(field "$VER" git_sha)" = "$rev" ] || fail "git_sha de /version != label revision"; ok "git_sha = revision de l'image"
-git diff --quiet "$(cat evidence/TD04/known-good-sha.txt)" -- compose.yaml nginx/nginx.conf \
+git diff --quiet "$(cat evidence/TD05/hardened-sha.txt)" -- compose.yaml nginx/nginx.conf \
   || fail "compose.yaml/nginx.conf different du known-good"; ok "definitions = known-good"
 
 echo "PASS: regression complete"

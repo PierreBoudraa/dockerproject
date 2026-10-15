@@ -1,0 +1,22 @@
+=== Durcissement réel
+proxy user=101:101 readonly=true capdrop=["ALL"] secopt=["no-new-privileges:true"] tmpfs={"/tmp":"size=16m,mode=1777,noexec,nosuid"} privileged=false
+delivery-api user=10001:10001 readonly=true capdrop=["ALL"] secopt=["no-new-privileges:true"] tmpfs={"/tmp":"size=16m,mode=1777,noexec,nosuid"} privileged=false
+postgres user=70:70 readonly=false capdrop=["ALL"] secopt=["no-new-privileges:true"] tmpfs=null privileged=false
+=== Ecritures (refus attendus sauf /tmp)
+touch: /etc/nginx/probe: Read-only file system
+proxy: /etc/nginx refuse
+touch: /usr/probe: Read-only file system
+proxy: /usr refuse
+proxy: /tmp ok
+touch: cannot touch '/srv/probe': Read-only file system
+api: /srv refuse
+touch: cannot touch '/etc/probe': Read-only file system
+api: /etc refuse
+api: /tmp ok
+=== Secret côté API (contenu non lu)
+api: lecture ok
+api: secret en lecture seule
+=== Ports
+delivery-api 8000/tcp
+postgres 5432/tcp
+proxy 127.0.0.1:8080->8080/tcp
