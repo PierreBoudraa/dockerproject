@@ -3,6 +3,8 @@ name: docker-delivery
 services:
   postgres:
     image: postgres:16-alpine@sha256:1a66d744c1b459e13b05a8fca341da84cb63383e99ce262210efee5a319d4551
+    # Exception documentee : rootfs en ecriture (initdb, socket Unix, fichiers de PGDATA).
+    # Compensations : volume nomme, cap_drop ALL, no-new-privileges, uid 70, aucun port publie.
     user: "70:70"
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]
@@ -38,6 +40,10 @@ services:
         GIT_SHA: ${GIT_SHA:-local}
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]
+    user: "10001:10001"
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777,noexec,nosuid
     environment:
       APP_ENVIRONMENT: ${APP_ENVIRONMENT:-course-lab}
       DATABASE_HOST: postgres
@@ -69,6 +75,12 @@ services:
 
   proxy:
     image: nginxinc/nginx-unprivileged:1.29-alpine@sha256:8059701048a6cc7d64e8ab2812a44be70161bfa9ecfc01d69e95b8ff2a648705
+    user: "101:101"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    tmpfs:
+      - /tmp:size=16m,mode=1777,noexec,nosuid
     ports:
       - "127.0.0.1:${COURSE_HTTP_PORT:-8080}:8080"
     volumes:
