@@ -1,0 +1,4 @@
+uid=10001(app) gid=10001(app) groups=10001(app)
+CapEff:	0000000000000000
+NoNewPrivs:	1
+secret: lisible

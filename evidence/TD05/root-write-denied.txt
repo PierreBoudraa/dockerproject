@@ -1,0 +1,2 @@
+touch: cannot touch '/srv/td05-denied': Read-only file system
+exit_code=1

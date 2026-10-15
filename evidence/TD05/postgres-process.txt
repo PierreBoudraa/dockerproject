@@ -1,0 +1,7 @@
+USER                PID                 PPID                COMMAND
+70                  27712               27689               postgres
+70                  27742               27712               postgres: checkpointer
+70                  27743               27712               postgres: background writer
+70                  27745               27712               postgres: walwriter
+70                  27746               27712               postgres: autovacuum launcher
+70                  27747               27712               postgres: logical replication launcher
