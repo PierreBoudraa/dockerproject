@@ -1,0 +1,3 @@
+delivery-api Up 3 hours (healthy)
+postgres Up About an hour (healthy)
+proxy Up 5 seconds (healthy)

@@ -1,0 +1,1 @@
+PASS: liveness, readiness, and release-identity checks succeeded

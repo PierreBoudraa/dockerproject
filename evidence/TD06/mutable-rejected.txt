@@ -1,0 +1,2 @@
+ERROR: REJECTED: 'delivery-api:mutable-tag' n'est pas un digest GHCR immuable (attendu : ghcr.io/...@sha256:<64 hex minuscules>)
+exit_code=2

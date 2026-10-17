@@ -1,0 +1,3 @@
+delivery-api Up 3 hours (healthy)
+postgres Up About an hour (healthy)
+proxy Exited (127) 39 hours ago

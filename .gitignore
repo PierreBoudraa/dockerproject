@@ -12,3 +12,4 @@ deploy/state/
 /evidence/
 /.course/
 secrets/
+state/

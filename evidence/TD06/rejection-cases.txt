@@ -1,0 +1,8 @@
+tag mutable                exit=2  ERROR: REJECTED: 'delivery-api:mutable-tag' n'est pas un digest GHCR immuable (attendu : ghcr.io/...
+ghcr :latest               exit=2  ERROR: REJECTED: 'ghcr.io/pierreboudraa/dockerproject/delivery-api:latest' n'est pas un digest GHCR 
+digest court               exit=2  ERROR: REJECTED: 'ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde' n'est pas un dig
+digest majuscules          exit=2  ERROR: REJECTED: 'ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:ABB19CDE9713BB12EA75A71286
+autre registre             exit=2  ERROR: REJECTED: 'docker.io/library/nginx@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bd
+deux arguments             exit=2  ERROR: usage: deploy.sh <ghcr.io/...@sha256:64hex> (exactement un argument)
+zero argument              exit=2  ERROR: usage: deploy.sh <ghcr.io/...@sha256:64hex> (exactement un argument)
+OK: docker jamais appelé pendant les rejets
