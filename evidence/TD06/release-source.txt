@@ -1,2 +1,11 @@
-release_sha=12d00541a8098de909265e7345af75aab51c90f8
-push=BLOCKED (aucun remote origin)
+release_sha=e33fcfd2c1d220c2c9b2d0fa2f7ce62da1771576
+run_id=39036489432
+run_url=https://github.com/PierreBoudraa/dockerproject/actions/runs/39036489432
+result=validate OK, build-publish OK (apres rerun), supply-chain OK
+digest=<copier depuis release-candidate.txt>
+tentatives echouees:
+ - 39034881471 (35c948c): setup-python, aucun fichier de dependances (sources non suivies)
+ - 39036240036 (8342359): idem, requirements-dev.txt non suivi
+ - 39036489432 tentatives 1-2: build-publish, permission_denied: read_package
+cause build-publish: paquet GHCR du TD02 non lie au depot; corrige dans les reglages du paquet (Manage Actions access, role Write), sans jeton personnel
+note: 39034881471 etait le premier run; le push initial 39a9c26 n a cree aucun run

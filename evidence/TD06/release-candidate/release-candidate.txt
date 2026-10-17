@@ -1,0 +1,6 @@
+release_sha=e33fcfd2c1d220c2c9b2d0fa2f7ce62da1771576
+image=ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:f5d77bc62b3e52e3de4e309067bc1785ee577b76693f722e3f0d0850f4d3dc92
+digest=sha256:f5d77bc62b3e52e3de4e309067bc1785ee577b76693f722e3f0d0850f4d3dc92
+run_id=39036489432
+run_attempt=3
+ref=refs/heads/coursework
