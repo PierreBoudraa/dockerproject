@@ -1,0 +1,30 @@
+python utilisé : Python 3.14.4
+The virtual environment was not created successfully because ensurepip is not
+available.  On Debian/Ubuntu systems, you need to install the python3-venv
+package using the following command.
+
+    apt install python3.14-venv
+
+You may need to use sudo with that command.  After installing the python3-venv
+package, recreate your virtual environment.
+
+Failing command: /home/pierre_bdr/project_starter/.venv/bin/python3
+
+/home/pierre_bdr/project_starter/.venv/bin/python: No module named pip
+BLOCKED local: installation avec hachages échouée (erreur ci-dessus)
+OK: syntaxe shell
+OK: compileall
+/home/pierre_bdr/project_starter/.venv/bin/python: No module named pytest
+=== Validateur sur les vrais fichiers, puis violations volontaires
+PASS: workflow, compose.yaml et Dockerfile respectent les exigences publiques
+PASS: fichiers reels acceptes
+PASS: violation rejetee (action non epinglee -> R1)
+PASS: violation rejetee (ecriture globale -> R2)
+PASS: violation rejetee (ecriture hors publication -> R3)
+PASS: violation rejetee (secret de deploiement -> R4)
+PASS: violation rejetee (publication sur pull request -> R6)
+PASS: violation rejetee (port ouvert a tous -> C1)
+PASS: violation rejetee (conteneur privilegie -> C2)
+PASS: violation rejetee (utilisateur root -> D1)
+OK: compose avec .env.example
+OK: git diff --check
