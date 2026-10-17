@@ -1,3 +1,10 @@
-status=BLOCKED
-reason=no authorized reviewer other than the active deployer available; no decision recorded; deployment not performed
 candidate=ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:f5d77bc62b3e52e3de4e309067bc1785ee577b76693f722e3f0d0850f4d3dc92
+source_sha=e33fcfd2c1d220c2c9b2d0fa2f7ce62da1771576
+run_url=https://github.com/PierreBoudraa/dockerproject/actions/runs/39036489432
+previous=ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901
+reviewer=leoChen
+decided_at_utc=2026-10-17T13:58Z
+decision=APPROVED
+scan_disposition=0 CRITICAL accepted. 48 HIGH reviewed at summary level; 4 fixable HIGH (libpcre2-8-0, openssl) accepted for this coursework deployment, to be fixed by rebuilding on an updated base image and rescanning.
+rollback_trigger=failed smoke test, version mismatch, or failed critical CRUD/persistence test
+reason=Run SHA, artifact SHA and imagetools digest match the candidate; checksums pass; no critical findings.
