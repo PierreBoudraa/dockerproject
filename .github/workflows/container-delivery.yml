@@ -170,3 +170,5 @@ jobs:
             release-candidate.txt
             SHA256SUMS
           if-no-files-found: error
+
+# Premier run Actions: aucun run n a ete cree pour 39a9c26 (creation de branche)
