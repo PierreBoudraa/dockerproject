@@ -1,0 +1,15 @@
+Name:      ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:f5d77bc62b3e52e3de4e309067bc1785ee577b76693f722e3f0d0850f4d3dc92
+MediaType: application/vnd.oci.image.index.v1+json
+Digest:    sha256:f5d77bc62b3e52e3de4e309067bc1785ee577b76693f722e3f0d0850f4d3dc92
+           
+Manifests: 
+  Name:        ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:19dcdc036f05efad67a0f4388b91ebb3caf8c6775a285e9954a146dde3293e57
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/amd64
+               
+  Name:        ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:7f20fff2ce5b6a651f26b421427a82a51970736e2ad1e4f4b39c96da48351dbe
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations: 
+    vnd.docker.reference.digest: sha256:19dcdc036f05efad67a0f4388b91ebb3caf8c6775a285e9954a146dde3293e57
+    vnd.docker.reference.type:   attestation-manifest
