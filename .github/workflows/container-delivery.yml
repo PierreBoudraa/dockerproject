@@ -1,0 +1,172 @@
+name: Container delivery
+
+on:
+  pull_request:
+  push:
+    branches:
+      - coursework
+    # Evidence-only commits must not publish a new image.
+    paths:
+      - .github/workflows/container-delivery.yml
+      - .dockerignore
+      - Dockerfile
+      - app/**
+      - compose.yaml
+      - gunicorn.conf.py
+      - nginx/**
+      - requirements*.txt
+      - scripts/**
+      - tests/**
+      - wsgi.py
+  workflow_dispatch:
+
+# Read-only by default. Only build-publish receives packages:write.
+permissions:
+  contents: read
+
+concurrency:
+  group: container-delivery-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Test the supplied application contract
+        run: |
+          set -Eeuo pipefail
+          python -m pip install --require-hashes --requirement requirements-dev.txt
+          python -m compileall -q app tests
+          python -m pytest -q
+      - name: Check scripts and delivery definitions
+        run: |
+          set -Eeuo pipefail
+          bash -n scripts/release-lib.sh scripts/deploy.sh scripts/rollback.sh scripts/regression.sh scripts/verify_runtime_contract.sh
+          python scripts/check_delivery_policy.py
+          bash scripts/test-delivery-policy.sh
+          docker compose --env-file .env.example -p docker-delivery config --quiet
+
+  build-publish:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/coursework'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+      reference: ${{ steps.pin.outputs.reference }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Compute lowercase image name
+        id: ref
+        run: |
+          set -Eeuo pipefail
+          echo "image=ghcr.io/${GITHUB_REPOSITORY,,}/delivery-api" >> "$GITHUB_OUTPUT"
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4.3.0
+      - name: Log in to GHCR
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push one candidate
+        id: build
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.ref.outputs.image }}:${{ github.sha }}
+          build-args: |
+            APP_VERSION=0.2.0
+            GIT_SHA=${{ github.sha }}
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.version=0.2.0
+      - name: Record the exact immutable reference
+        id: pin
+        env:
+          IMAGE: ${{ steps.ref.outputs.image }}
+          DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$DIGEST" =~ ^sha256:[a-f0-9]{64}$ ]] || { echo "digest invalide: $DIGEST" >&2; exit 1; }
+          echo "reference=${IMAGE}@${DIGEST}" >> "$GITHUB_OUTPUT"
+
+  supply-chain:
+    needs: build-publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Log in to GHCR (read only)
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: SBOM of the exact digest
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: image
+          image-ref: ${{ needs.build-publish.outputs.reference }}
+          format: cyclonedx
+          output: sbom.cdx.json
+          version: v0.73.0
+      - name: Unfiltered vulnerability result of the exact digest
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          scan-type: image
+          image-ref: ${{ needs.build-publish.outputs.reference }}
+          scanners: vuln
+          format: json
+          output: vulnerabilities.json
+          exit-code: "0"
+          version: v0.73.0
+      - name: Bind evidence to the release candidate
+        env:
+          REFERENCE: ${{ needs.build-publish.outputs.reference }}
+          DIGEST: ${{ needs.build-publish.outputs.digest }}
+          SOURCE_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          REF_NAME: ${{ github.ref }}
+        run: |
+          set -Eeuo pipefail
+          test -s sbom.cdx.json
+          test -s vulnerabilities.json
+          python3 -m json.tool sbom.cdx.json > /dev/null
+          python3 -m json.tool vulnerabilities.json > /dev/null
+          grep -q -- "$DIGEST" vulnerabilities.json
+          printf '%s\n' "$REFERENCE" > image-reference.txt
+          printf 'release_sha=%s\nimage=%s\ndigest=%s\nrun_id=%s\nrun_attempt=%s\nref=%s\n' \
+            "$SOURCE_SHA" "$REFERENCE" "$DIGEST" "$RUN_ID" "$RUN_ATTEMPT" "$REF_NAME" > release-candidate.txt
+          sha256sum sbom.cdx.json vulnerabilities.json image-reference.txt release-candidate.txt > SHA256SUMS
+          sha256sum --check SHA256SUMS
+      - name: Upload release evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: release-candidate-${{ github.sha }}
+          path: |
+            sbom.cdx.json
+            vulnerabilities.json
+            image-reference.txt
+            release-candidate.txt
+            SHA256SUMS
+          if-no-files-found: error
