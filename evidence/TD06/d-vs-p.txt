@@ -1,0 +1,3 @@
+P=ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:abb19cde9713bb12ea75a712865c350b427ae49f1cec999c5bdfef6a714da901
+D=ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:f5d77bc62b3e52e3de4e309067bc1785ee577b76693f722e3f0d0850f4d3dc92
+D != P : verifie
