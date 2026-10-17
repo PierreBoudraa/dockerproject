@@ -1,0 +1,19 @@
+== Application (via le proxy)
+PASS: /healthz ok
+PASS: /readyz ready (postgres)
+PASS: /version delivery-api
+== Persistance (marqueur TD3, id 2)
+PASS: element API 2 identique a TD3
+PASS: liste API identique a TD3
+PASS: lignes SQL identiques a TD3
+== Isolation
+PASS: postgres et delivery-api : aucun port publie
+PASS: proxy publie uniquement 127.0.0.1:8080
+PASS: 5432 et 8000 injoignables depuis l'hote
+== Identite de release
+PASS: image API = release.env
+PASS: imageID = digest
+PASS: git_sha = revision de l'image
+PASS: definitions = known-good
+PASS: regression complete
+exit_code=0
