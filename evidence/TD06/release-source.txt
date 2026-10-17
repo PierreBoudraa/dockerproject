@@ -9,3 +9,4 @@ tentatives echouees:
  - 39036489432 tentatives 1-2: build-publish, permission_denied: read_package
 cause build-publish: paquet GHCR du TD02 non lie au depot; corrige dans les reglages du paquet (Manage Actions access, role Write), sans jeton personnel
 note: 39034881471 etait le premier run; le push initial 39a9c26 n a cree aucun run
+rerun=tentative 3 sur le meme SHA e33fcfd, validate vert
