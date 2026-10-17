@@ -1,0 +1,1 @@
+{"conclusion":"success","event":"pull_request","headSha":"7ca5eee709351b12af6ae1bfee932ba5bc248ec1","jobs":[{"conclusion":"success","name":"validate"},{"conclusion":"skipped","name":"build-publish"},{"conclusion":"skipped","name":"supply-chain"}],"url":"https://github.com/PierreBoudraa/dockerproject/actions/runs/39037762936"}

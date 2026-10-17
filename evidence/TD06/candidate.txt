@@ -1,0 +1,3 @@
+candidate=ghcr.io/pierreboudraa/dockerproject/delivery-api@sha256:f5d77bc62b3e52e3de4e309067bc1785ee577b76693f722e3f0d0850f4d3dc92
+source=e33fcfd2c1d220c2c9b2d0fa2f7ce62da1771576
+run_id=39036489432
