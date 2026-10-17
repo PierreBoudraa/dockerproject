@@ -28,3 +28,4 @@ PASS: violation rejetee (conteneur privilegie -> C2)
 PASS: violation rejetee (utilisateur root -> D1)
 OK: compose avec .env.example
 OK: git diff --check
+pytest: BLOCKED en local (python3.14-venv absent); prouve par le job validate du run 39036489432 (Python 3.12), vert
