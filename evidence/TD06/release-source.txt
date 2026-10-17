@@ -2,7 +2,7 @@ release_sha=e33fcfd2c1d220c2c9b2d0fa2f7ce62da1771576
 run_id=39036489432
 run_url=https://github.com/PierreBoudraa/dockerproject/actions/runs/39036489432
 result=validate OK, build-publish OK (apres rerun), supply-chain OK
-digest=<copier depuis release-candidate.txt>
+digest=sha256:f5d77bc62b3e52e3de4e309067bc1785ee577b76693f722e3f0d0850f4d3dc92
 tentatives echouees:
  - 39034881471 (35c948c): setup-python, aucun fichier de dependances (sources non suivies)
  - 39036240036 (8342359): idem, requirements-dev.txt non suivi
